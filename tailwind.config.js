@@ -15,7 +15,8 @@ module.exports = {
         Blue: '#1388AB',
         primaryBg: '#1C1328',
         cardBg: '#332B3E',
-        priceColor: '#79e75e'
+        priceColor: '#79e75e',
+        secondaryBg: '#3E3648'
       },
       maxWidth: {
         designSize: '1440px',
