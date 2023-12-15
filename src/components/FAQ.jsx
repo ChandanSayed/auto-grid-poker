@@ -1,9 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import ShadowContainer from './ShadowContainer';
 
 const FAQ = () => {
   const [open, setOpen] = useState(0);
-
+  const panel = useRef();
   const faqs = [
     {
       question: 'What is AutoGrid Poker?',
@@ -45,44 +46,48 @@ const FAQ = () => {
   }
 
   return (
-    <section className="max-w-featuresWidth mx-4 md:mx-auto mt-32 mb-32">
-      <h2 className="font-bold text-2xl md:text-5xl text-center mb-6 md:mb-8">FAQ</h2>
-      <div className="flex flex-col gap-5 md:gap-8 justify-center mb-8 rounded-t-lg ">
-        {faqs.map((faq, i) => {
-          return (
-            <div className="bg-cardBg rounded-lg" key={i}>
-              <div className="bg-secondaryBg rounded-t-lg flex justify-between py-5 px-3.5 md:px-8 cursor-pointer" onClick={() => handleAccordion(i)}>
-                <h2 className="text-lg md:text-2xl font-bold">{faq.question}</h2>
-                {open === i ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M22.6667 20L16 13.3333L9.33332 20L22.6667 20Z" fill="url(#paint0_linear_26_2075)" />
-                    <defs>
-                      <linearGradient id="paint0_linear_26_2075" x1="16" y1="20" x2="16" y2="13.3333" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#1388AB" />
-                        <stop offset="1" stop-color="#1E5492" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <path d="M9.33325 13.3333L15.9999 19.9999L22.6666 13.3333H9.33325Z" fill="url(#paint0_linear_15_1270)" />
-                    <defs>
-                      <linearGradient id="paint0_linear_15_1270" x1="15.9999" y1="13.3333" x2="15.9999" y2="19.9999" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#1388AB" />
-                        <stop offset="1" stop-color="#1E5492" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                )}
+    <ShadowContainer>
+      <div className="absolute -z-10 w-[400px] h-[400px] rounded-full blur-[200px] opacity-50 bg-redBoxGradient top-44 -left-36"></div>
+      <div className="absolute -z-10 w-[400px] h-[400px] rounded-full blur-[200px] opacity-50 bg-blueBoxGradient top-72 -right-36"></div>
+      <div className="max-w-featuresWidth mx-4 md:mx-auto mt-32 mb-32">
+        <h2 className="font-bold text-2xl md:text-5xl text-center mb-6 md:mb-8">FAQ</h2>
+        <div className="flex flex-col gap-5 md:gap-8 justify-center mb-8 rounded-t-lg ">
+          {faqs.map((faq, i) => {
+            return (
+              <div className="bg-cardBg rounded-lg" key={i}>
+                <div className="bg-secondaryBg rounded-t-lg flex justify-between py-5 px-3.5 md:px-8 cursor-pointer" onClick={() => handleAccordion(i)}>
+                  <h2 className="text-lg md:text-2xl font-bold">{faq.question}</h2>
+                  {open === i ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                      <path d="M22.6667 20L16 13.3333L9.33332 20L22.6667 20Z" fill="url(#paint0_linear_26_2075)" />
+                      <defs>
+                        <linearGradient id="paint0_linear_26_2075" x1="16" y1="20" x2="16" y2="13.3333" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#1388AB" />
+                          <stop offset="1" stopColor="#1E5492" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                      <path d="M9.33325 13.3333L15.9999 19.9999L22.6666 13.3333H9.33325Z" fill="url(#paint0_linear_15_1270)" />
+                      <defs>
+                        <linearGradient id="paint0_linear_15_1270" x1="15.9999" y1="13.3333" x2="15.9999" y2="19.9999" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#1388AB" />
+                          <stop offset="1" stopColor="#1E5492" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  )}
+                </div>
+                <div ref={panel} className={`transition-all ease-in-out duration-300 px-3.5 md:px-8 ${open === i ? `max-h-[${panel.current?.scrollHeight}px] py-5` : 'max-h-0 overflow-hidden ease-in-out duration-300'}`}>
+                  <p className="text-lg">{faq.answer}</p>
+                </div>
               </div>
-              <div className={`transition-all ${open === i ? 'h-auto py-5 px-3.5 md:px-8' : 'h-0 overflow-hidden'}`}>
-                <p className="text-lg">{faq.answer}</p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </section>
+    </ShadowContainer>
   );
 };
 
