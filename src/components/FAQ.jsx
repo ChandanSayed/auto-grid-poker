@@ -46,7 +46,7 @@ const FAQ = () => {
 
   return (
     <section className="max-w-featuresWidth mx-4 md:mx-auto mt-32 mb-32">
-      <h2 className="font-bold text-2xl md:text-5xl text-center mb-3.5">FAQ</h2>
+      <h2 className="font-bold text-2xl md:text-5xl text-center mb-6 md:mb-8">FAQ</h2>
       <div className="flex flex-col gap-5 md:gap-8 justify-center mb-8 rounded-t-lg ">
         {faqs.map((faq, i) => {
           return (
