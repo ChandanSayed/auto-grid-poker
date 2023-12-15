@@ -1,7 +1,7 @@
-import { Inter } from 'next/font/google';
+import { Nunito_Sans } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Nunito_Sans({ weight: ['400', '500', '600', '700', '800', '900'], subsets: ['latin'], display: 'swap' });
 
 export const metadata = {
   title: 'Auto Grid Poker',
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-primaryBg text-white`}>{children}</body>
     </html>
   );
 }
