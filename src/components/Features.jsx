@@ -43,7 +43,7 @@ const Features = () => {
                 <img src={feature.borderImg.src} className={`absolute ${feature.borderClasses}`} />
                 <div className="px-3.5 py-5 lg:p-8 max-md:text-center">
                   <img src={`/home/Icon${i + 1}.svg`} className="max-md:mx-auto w-8 md:w-12" />
-                  <h2 className="text-lg md:text-2xl font-bold mt-3.5 mb-2 md:mt-6 md:mb-3.5">{feature.title}</h2>
+                  <h3 className="text-lg md:text-2xl font-bold mt-3.5 mb-2 md:mt-6 md:mb-3.5">{feature.title}</h3>
                   <p className="text-sm md:text-lg font-normal">{feature.des}</p>
                 </div>
               </div>

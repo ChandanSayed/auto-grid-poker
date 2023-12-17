@@ -27,7 +27,7 @@ const Pricing = () => {
             return (
               <div key={i} className={`bg-cardBg ${pack.cardOpacity ? 'opacity-50' : ''} rounded-lg p-5 md:p-8`}>
                 <div className="flex justify-between md:mb-8 mb-5">
-                  <h2 className="text-2xl md:text-3xl font-bold">{pack.name}</h2>
+                  <h3 className="text-2xl md:text-3xl font-bold">{pack.name}</h3>
                   <p className="text-priceColor text-[24px] font-bold pt-1 text-xl">${pack.price}</p>
                 </div>
                 {pack.options.map((option, i) => {
